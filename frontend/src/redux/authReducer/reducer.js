@@ -28,7 +28,7 @@ export const reducer = (state = initialState, action) => {
         isSignupSuccess: true,
         isSignupProcess: false,
         isSignupFail: false,
-        signupMessage: "payload.message",
+        signupMessage: payload.data.message,
       };
     case types.USER_SIGNUP_FAIL:
       return {
@@ -36,7 +36,7 @@ export const reducer = (state = initialState, action) => {
         isSignupSuccess: false,
         isSignupProcess: false,
         isSignupFail: true,
-        signupMessage: "payload",
+        signupMessage: payload,
       };
 
     default:

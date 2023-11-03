@@ -1,10 +1,10 @@
 import axios from "axios"
 import * as types from "./actionTypes";
 
-const END_POINT = "https://authentication-q13p.onrender.com"
+const END_POINT = "https://budget-manager-lww5.onrender.com"
 
 // signup function
-const signupFunction = (userData) = async (dispatch) => {
+const signupFunction = (formData) => async (dispatch) => {
 
     // signup processing
     dispatch({ type: types.USER_SIGNUP_PROCESSING });
@@ -12,17 +12,14 @@ const signupFunction = (userData) = async (dispatch) => {
     try {
 
         // axios post request
-        const result = await axios.post(`${END_POINT}`, userData);
+        const result = await axios.post(`${END_POINT}/api/auth/signup`, formData);
 
         // dispatch signup success 
-        // dispatch({ type: types.USER_SIGNUP_SUCCESS, payload: res.data })
-        console.log(res)
-
+        dispatch({ type: types.USER_SIGNUP_SUCCESS, payload: result })
     } catch (error) {
 
         // dispatch signup fail 
-        console.log(error)
-        // dispatch({ type: types.USER_SIGNUP_FAIL, payload: error })
+        dispatch({ type: types.USER_SIGNUP_FAIL, payload: error.response.data.error || "Signup Fail Please Try Again!" })
 
     }
 }
