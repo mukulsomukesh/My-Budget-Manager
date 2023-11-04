@@ -7,6 +7,11 @@ const initialState = {
   isSignupFail: false,
   signupMessage: "",
 
+  isLoginProcess: false,
+  isLoginSuccess: false,
+  isLoginFail: false,
+  loginMessage: "",
+
 };
 
 export const reducer = (state = initialState, action) => {
@@ -39,6 +44,31 @@ export const reducer = (state = initialState, action) => {
         signupMessage: payload,
       };
 
+      case types.USER_LOGIN_PROCESSING:
+        return {
+          ...state,
+          isLoginSuccess: false,
+          isLoginProcess: true,
+          isLoginFail: false,
+          loginMessage: "",
+        };
+      case types.USER_LOGIN_SUCCESS:
+        return {
+          ...state,
+          isLoginSuccess: true,
+          isLoginProcess: false,
+          isLoginFail: false,
+          loginMessage: payload.data.message,
+        };
+      case types.USER_LOGIN_FAIL:
+        return {
+          ...state,
+          isLoginSuccess: false,
+          isLoginProcess: false,
+          isLoginFail: true,
+          loginMessage: payload,
+        };
+  
     default:
       return state;
   }
