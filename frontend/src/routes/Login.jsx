@@ -145,6 +145,9 @@ export default function Login() {
           {/* login button  */}
           <CustomButton label="Login" isProcessing={isLoginProcess} onClick={handleSubmit} />
 
+          <p className='mt-4 text-md font-semibold ' > Don't have an account, <span onClick={() => { navigate("/signup") }} className="text-blue-600 font-extrabold cursor-pointer " > Signup </span>  </p>
+
+
         </div>
         {/* END:form container div */}
 
