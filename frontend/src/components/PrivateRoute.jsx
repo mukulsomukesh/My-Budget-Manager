@@ -4,8 +4,7 @@ import { Navigate } from 'react-router-dom';
 
 export default function PrivateRoute({ children }) {
 
-    // const isLoginSuccess = useSelector((state) => state.AuthReducer.isLoginSuccess);
-    const isLoginSuccess = false;
+    const isLoginSuccess = useSelector((state) => state.AuthReducer.isLoginSuccess);
 
     // if user not login
     if (!isLoginSuccess) {
